@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { MONGOURI } = require('./keys');
+const { MONGOURI } = require('./config/keys');
 
 mongoose.connect(MONGOURI, {
     useNewUrlParser: true,
@@ -12,4 +12,3 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('Succesfully connected to MongoDB');
 });
-
