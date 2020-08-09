@@ -106,3 +106,15 @@ a {
     max-height: 100px;
     margin-left: 152px;
 }
+
+.btn-search {
+    color: black;
+}
+
+.modal-search {
+    color: black;
+}
+
+.collection-item {
+    width: 100%;
+}

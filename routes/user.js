@@ -3,7 +3,7 @@ const router = Router();
 
 const requireSignIn = require('../middleware/requireSignIn');
 
-const { getUserProfile, followUser, unfollowUser, updatePhoto } = require('../controllers/userController');
+const { getUserProfile, followUser, unfollowUser, updatePhoto, searchUsers } = require('../controllers/userController');
 
 router.route('/user/:id')
     .get(requireSignIn, getUserProfile)
@@ -17,4 +17,7 @@ router.route('/unfollow')
 router.route('/updatePhoto')
     .put(requireSignIn, updatePhoto)
 
+router.route('/searchUsers')
+    .post(requireSignIn, searchUsers)
+    
 module.exports = router;

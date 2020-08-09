@@ -23,6 +23,7 @@ postController.getPosts = (req, res) => {
     Post.find()
         .populate("author", "_id name")
         .populate("comments.author", "_id name")
+        .sort('-createdAt')
         .then(posts => res.json({ posts }))
         .catch(err => console.error(err));
 };
@@ -106,6 +107,7 @@ postController.getFollowingPosts = (req, res) => {
     Post.find({ author: { $in: req.user.following } })
         .populate("author", "_id name")
         .populate("comments.author", "_id name")
+        .sort('-createdAt')
         .then(posts => res.json({ posts }))
         .catch(err => console.error(err));
 };
