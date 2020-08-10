@@ -19,7 +19,7 @@ const CreatePost = () => {
             body: data
         }).then(res => res.json())
             .then(data => {
-                fetch("http://localhost:5000/create", {
+                fetch("/create", {
                     method: "post",
                     headers: {
                         "Content-Type": "application/json",

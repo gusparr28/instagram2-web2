@@ -43,7 +43,7 @@ const NavBar = () => {
 
     const fetchUsers = (query) => {
         setSearch(query);
-        fetch("http://localhost:5000/searchUsers", {
+        fetch("/searchUsers", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",

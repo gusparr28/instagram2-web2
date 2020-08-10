@@ -8,19 +8,18 @@ const FollowingPosts = () => {
     const { state, dispatch } = useContext(UserContext);
 
     useEffect(() => {
-        fetch("http://localhost:5000/followingPosts", {
+        fetch("/followingPosts", {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
         }).then(res => res.json())
             .then(result => {
-                console.log(result);
                 setData(result.posts);
             })
     }, []);
 
     const likePost = (id) => {
-        fetch("http://localhost:5000/like", {
+        fetch("/like", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +42,7 @@ const FollowingPosts = () => {
     };
 
     const unlikePost = (id) => {
-        fetch("http://localhost:5000/unlike", {
+        fetch("/unlike", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -66,7 +65,7 @@ const FollowingPosts = () => {
     };
 
     const makeComment = (text, postId) => {
-        fetch("http://localhost:5000/comments", {
+        fetch("/comments", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -78,7 +77,6 @@ const FollowingPosts = () => {
             })
         }).then(res => res.json())
             .then(result => {
-                console.log(result);
                 const newData = data.map(item => {
                     if (item._id === result._id) {
                         return result;
@@ -91,7 +89,7 @@ const FollowingPosts = () => {
     };
 
     const deletePosts = (postId) => {
-        fetch(`http://localhost:5000/deletePost/${postId}`, {
+        fetch(`/deletePost/${postId}`, {
             method: "delete",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -145,7 +143,6 @@ const FollowingPosts = () => {
                                 <p>{item.description}</p>
                                 {
                                     item.comments.map(record => {
-                                        console.log(record);
                                         return (
                                             <h6 key={record._id}><span className="comment-author">{record.author.name}</span> {record.text} </h6>
                                         )
